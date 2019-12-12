@@ -3829,7 +3829,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  if (forceBase64) {
 	    this.supportsBinary = false;
 	  }
-	  this.perMessageDeflate = opts.perMessageDeflate;
 	  this.usingBrowserWebSocket = BrowserWebSocket && !opts.forceNode;
 	  this.protocols = opts.protocols;
 	  if (!this.usingBrowserWebSocket) {
@@ -3872,10 +3871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  var uri = this.uri();
 	  var protocols = this.protocols;
-	  var opts = {
-	    agent: this.agent,
-	    perMessageDeflate: this.perMessageDeflate
-	  };
+	  var opts = {};
 	
 	  // SSL options for Node.js client
 	  if (this.extraHeaders) {
