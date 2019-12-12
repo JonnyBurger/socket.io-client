@@ -3878,13 +3878,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	
 	  // SSL options for Node.js client
-	  opts.pfx = this.pfx;
-	  opts.key = this.key;
-	  opts.passphrase = this.passphrase;
-	  opts.cert = this.cert;
-	  opts.ca = this.ca;
-	  opts.ciphers = this.ciphers;
-	  opts.rejectUnauthorized = this.rejectUnauthorized;
 	  if (this.extraHeaders) {
 	    opts.headers = this.extraHeaders;
 	  }
@@ -4111,7 +4104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api private
 	 */
 	
-	function Transport(opts) {
+	function Transport (opts) {
 	  this.path = opts.path;
 	  this.hostname = opts.hostname;
 	  this.port = opts.port;
@@ -4119,7 +4112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.query = opts.query;
 	  this.timestampParam = opts.timestampParam;
 	  this.timestampRequests = opts.timestampRequests;
-	  this.readyState = "";
+	  this.readyState = '';
 	  this.agent = opts.agent || false;
 	  this.socket = opts.socket;
 	  this.enablesXDR = opts.enablesXDR;
@@ -4132,7 +4125,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  this.cert = opts.cert;
 	  this.ca = opts.ca;
 	  this.ciphers = opts.ciphers;
-	  this.rejectUnauthorized = opts.rejectUnauthorized;
 	  this.forceNode = opts.forceNode;
 	
 	  // results of ReactNative environment detection
@@ -4157,11 +4149,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api public
 	 */
 	
-	Transport.prototype.onError = function(msg, desc) {
+	Transport.prototype.onError = function (msg, desc) {
 	  var err = new Error(msg);
-	  err.type = "TransportError";
+	  err.type = 'TransportError';
 	  err.description = desc;
-	  this.emit("error", err);
+	  this.emit('error', err);
 	  return this;
 	};
 	
@@ -4171,9 +4163,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api public
 	 */
 	
-	Transport.prototype.open = function() {
-	  if ("closed" === this.readyState || "" === this.readyState) {
-	    this.readyState = "opening";
+	Transport.prototype.open = function () {
+	  if ('closed' === this.readyState || '' === this.readyState) {
+	    this.readyState = 'opening';
 	    this.doOpen();
 	  }
 	
@@ -4186,8 +4178,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api private
 	 */
 	
-	Transport.prototype.close = function() {
-	  if ("opening" === this.readyState || "open" === this.readyState) {
+	Transport.prototype.close = function () {
+	  if ('opening' === this.readyState || 'open' === this.readyState) {
 	    this.doClose();
 	    this.onClose();
 	  }
@@ -4202,11 +4194,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api private
 	 */
 	
-	Transport.prototype.send = function(packets) {
-	  if ("open" === this.readyState) {
+	Transport.prototype.send = function (packets) {
+	  if ('open' === this.readyState) {
 	    this.write(packets);
 	  } else {
-	    throw new Error("Transport not open");
+	    throw new Error('Transport not open');
 	  }
 	};
 	
@@ -4216,10 +4208,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api private
 	 */
 	
-	Transport.prototype.onOpen = function() {
-	  this.readyState = "open";
+	Transport.prototype.onOpen = function () {
+	  this.readyState = 'open';
 	  this.writable = true;
-	  this.emit("open");
+	  this.emit('open');
 	};
 	
 	/**
@@ -4229,7 +4221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api private
 	 */
 	
-	Transport.prototype.onData = function(data) {
+	Transport.prototype.onData = function (data) {
 	  var packet = parser.decodePacket(data, this.socket.binaryType);
 	  this.onPacket(packet);
 	};
@@ -4238,8 +4230,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Called with a decoded packet.
 	 */
 	
-	Transport.prototype.onPacket = function(packet) {
-	  this.emit("packet", packet);
+	Transport.prototype.onPacket = function (packet) {
+	  this.emit('packet', packet);
 	};
 	
 	/**
@@ -4248,9 +4240,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @api private
 	 */
 	
-	Transport.prototype.onClose = function() {
-	  this.readyState = "closed";
-	  this.emit("close");
+	Transport.prototype.onClose = function () {
+	  this.readyState = 'closed';
+	  this.emit('close');
 	};
 
 
