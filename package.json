@@ -1,5 +1,5 @@
 {
-  "name": "socket.io-client",
+  "name": "react-native-socket.io-client",
   "version": "2.3.0",
   "keywords": [
     "realtime",
