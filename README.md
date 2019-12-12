@@ -1,3 +1,15 @@
+## Jonnys socket.io fork
+
+Intended for using in React Native. Much smaller because the following changes were made: 
+
+- Remove polyfills
+- Remove debug package
+- Use slim package
+- Remove `indexof` package
+- Removing all other transports other than websocket
+- Remove support for binary
+- Enable screw_ie8=true 
+- Remove babel compilation (RN will do it again)
 
 # socket.io-client
 
